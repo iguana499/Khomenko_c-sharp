@@ -18,6 +18,7 @@ namespace PT_lab_1
             this.pictureHeight = pictureHeight;
             for (int i = 0; i < countStages; ++i)
             {
+               
             parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth,
                 pictureHeight));
             }
@@ -113,5 +114,9 @@ namespace PT_lab_1
             }
             return true;
         }
-    }            
+        public void Sort()
+        {
+            parkingStages.Sort();
+        }
+    }
 }

@@ -1,22 +1,33 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 namespace PT_lab_1
 {
-    public class Parking<T> where T : class, ITransport
+    public class Parking<T> : IEnumerator<T>, IEnumerable<T>, IComparable<Parking<T>>
+ where T : class, ITransport
     {
         private Dictionary<int, T> _places;
         private int _maxCount;
         private int PictureWidth { get; set; }
         private int PictureHeight { get; set; }
-        private const int _placeSizeWidth = 2000;
-        private const int _placeSizeHeight = 135;
+        private const int _placeSizeWidth = 270;
+        private const int _placeSizeHeight = 133;
+        private int _currentIndex;
+        public int GetKey
+        {
+            get
+            {
+                return _places.Keys.ToList()[_currentIndex];
+            }
+        }
         public Parking(int sizes, int pictureWidth, int pictureHeight)
         {
             _maxCount = sizes;
             _places = new Dictionary<int, T>();
             PictureWidth = pictureWidth;
-            PictureHeight = pictureHeight; 
+            PictureHeight = pictureHeight;     
         }
         public static int operator +(Parking<T> p, T car)
         {
@@ -24,9 +35,9 @@ namespace PT_lab_1
             {
                 throw new ParkingOverflowException();
             }
-            if (p._places.Count == p._maxCount)
+            if (p._places.ContainsValue(car))
             {
-                return -1;
+                throw new ParkingAlreadyHaveException();
             }
             for (int i = 0; i < p._maxCount; i++)
             {
@@ -67,15 +78,15 @@ namespace PT_lab_1
         private void DrawMarking(Graphics g)
         {
             Pen pen = new Pen(Color.Black, 3);
-            g.DrawRectangle(pen, 0, 0, (_maxCount / 5) * _placeSizeWidth, 480);
+            g.DrawRectangle(pen, 0, 0, (_maxCount / 5) * _placeSizeWidth, 1000);
             for (int i = 0; i < _maxCount / 5; i++)
             {
                 for (int j = 0; j < 6; ++j)
                 {
                     g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight,
-                    i * _placeSizeWidth + 1000, j * _placeSizeHeight);
+                    i * _placeSizeWidth + 110, j * _placeSizeHeight);
                 }
-                g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
+                g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 1000);
             }
         }
         public T this[int ind]
@@ -101,6 +112,88 @@ namespace PT_lab_1
                     throw new ParkingOccupiedPlaceException(ind);
                 }
             }
+        }
+        public T Current
+        {
+            get
+            {
+                return _places[_places.Keys.ToList()[_currentIndex]];
+            }
+        }
+        object IEnumerator.Current
+        {
+            get
+            {
+                return Current;
+            }
+        }
+        public void Dispose()
+        {
+            _places.Clear();
+        }
+        public bool MoveNext()
+        {
+            if (_currentIndex + 1 >= _places.Count)
+            {
+                Reset();
+                return false;
+            }
+            _currentIndex++;
+            return true;
+        }
+        public void Reset()
+        {
+            _currentIndex = -1;
+        }
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this;
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+        public int CompareTo(Parking<T> other)
+        {
+            if (_places.Count > other._places.Count)
+            {
+                return -1;
+            }
+            else if (_places.Count < other._places.Count)
+            {
+                return 1;
+            }
+            else if (_places.Count > 0)
+            {
+                var thisKeys = _places.Keys.ToList();
+                var otherKeys = other._places.Keys.ToList();
+                for (int i = 0; i < _places.Count; ++i)
+                {
+                    if (_places[thisKeys[i]] is Car && other._places[thisKeys[i]] is
+                   autotrain)
+                    {
+                        return 1;
+                    }
+                    if (_places[thisKeys[i]] is autotrain && other._places[thisKeys[i]]
+                    is Car)
+                    {
+                        return -1;
+                    }
+                    if (_places[thisKeys[i]] is Car && other._places[thisKeys[i]] is
+                    Car)
+                    {
+                        return (_places[thisKeys[i]] is
+                       Car).CompareTo(other._places[thisKeys[i]] is Car);
+                    }
+                    if (_places[thisKeys[i]] is autotrain && other._places[thisKeys[i]]
+                    is autotrain)
+                    {
+                        return (_places[thisKeys[i]] is
+                       autotrain).CompareTo(other._places[thisKeys[i]] is autotrain);
+                    }
+                }
+            }
+            return 0;
         }
     }
 }
