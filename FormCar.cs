@@ -12,7 +12,8 @@ namespace PT_lab_1
 {
     public partial class FormCar : Form
     {
-        private autotrain autotrain;
+
+        private ITransport car;
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -23,19 +24,26 @@ namespace PT_lab_1
         /// <summary>
         /// Метод отрисовки машины
         /// </summary>
+        /// 
         private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxCar.Width, pictureBoxCar.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            autotrain.DrawCar(gr);
+            car.DrawCar(gr);
             pictureBoxCar.Image = bmp;
         }
         /// <summary>
-        /// Обработка нажатия кнопки "Создать"
+        /// Обработка нажатия кнопки "Создать автомобиль"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        
+
+        /// <summary>
+        /// Обработка нажатия кнопки "Создать гоночный автомобиль"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         /// <summary>
         /// Обработка нажатия кнопок управления
         /// </summary>
@@ -48,31 +56,42 @@ namespace PT_lab_1
             switch (name)
             {
                 case "buttonUp":
-                    autotrain.MoveTransport(Direction.Up);
+                    car.MoveTransport(Direction.Up);
                     break;
                 case "buttonDown":
-                    autotrain.MoveTransport(Direction.Down);
+                    car.MoveTransport(Direction.Down);
                     break;
                 case "buttonLeft":
-                    autotrain.MoveTransport(Direction.Left);
+                    car.MoveTransport(Direction.Left);
                     break;
                 case "buttonRight":
-                    autotrain.MoveTransport(Direction.Right);
+                    car.MoveTransport(Direction.Right);
                     break;
             }
             Draw();
+
+
         }
 
-        private void buttonCreate_Click_1(object sender, EventArgs e)
+        private void ButtonCreate_Click(object sender, EventArgs e)
         {
-
             Random rnd = new Random();
-            autotrain = new autotrain(rnd.Next(100, 120), rnd.Next(1000, 2000), Color.Green,
-           Color.Yellow, true, false, true, false);
-            autotrain.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCar.Width,
+            car = new wagons(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green,
+           Color.Yellow, true, true, true, true);
+            car.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCar.Width,
            pictureBoxCar.Height);
             Draw();
 
+        }
+
+        private void ButtonCreateCar_Click_1(object sender, EventArgs e)
+        {
+
+            Random rnd = new Random();
+            car = new autotrain(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green);
+            car.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCar.Width,
+           pictureBoxCar.Height);
+            Draw();
         }
     }
 }
