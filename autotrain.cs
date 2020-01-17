@@ -9,8 +9,8 @@ namespace PT_lab_1
 {
     public class autotrain : Vehicle
     {
-        protected const int tankWidth = 100;
-        protected const int tankHeight = 60;
+        protected const int tankWidth = 701;
+        protected const int tankHeight = 200;
         public autotrain(int maxSpeed, float weight, Color mainColor)
         {
             MaxSpeed = maxSpeed;
@@ -51,7 +51,7 @@ namespace PT_lab_1
         public override void DrawCar(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
-            Brush brBlue = new SolidBrush(Color.LightBlue);
+            Brush brBlue = new SolidBrush(MainColor);
             Brush brGray = new SolidBrush(Color.Gray);
             Brush brBlack = new SolidBrush(Color.Black);
             g.FillRectangle(brBlue, _startPosX + 585, _startPosY + 50, 60, 60);

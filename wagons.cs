@@ -15,7 +15,7 @@ namespace PT_lab_1
         public bool dontWork { private set; get; }
         public bool Refrigerator { private set; get; }
         public wagons(int maxSpeed, float weight, Color mainColor, Color dopColor,
-bool secondWagon, bool thirdWagon, bool backSpoiler, bool refrigerator): base(maxSpeed, weight, mainColor)
+bool secondWagon, bool thirdWagon, bool backSpoiler, bool refrigerator) : base(maxSpeed, weight, mainColor)
         {
             DopColor = dopColor;
             second = secondWagon;
@@ -26,7 +26,7 @@ bool secondWagon, bool thirdWagon, bool backSpoiler, bool refrigerator): base(ma
         public override void DrawCar(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
-            Brush brBlue = new SolidBrush(Color.LightBlue);
+            Brush brBlue = new SolidBrush(DopColor);
             Brush brGray = new SolidBrush(Color.Gray);
             Brush brBlack = new SolidBrush(Color.Black);
             if (second)
