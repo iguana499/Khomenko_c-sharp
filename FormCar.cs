@@ -77,7 +77,7 @@ namespace PT_lab_1
         {
            Random rnd = new Random();
             car = new autotrain(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue,
-           Color.Yellow, true, true, true);
+           Color.Yellow, true, true, false);
             car.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCar.Width,
            pictureBoxCar.Height);
             Draw();

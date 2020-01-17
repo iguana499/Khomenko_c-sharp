@@ -20,12 +20,23 @@ namespace PT_lab_1
         /// Количество уровней-парковок
         /// </summary>
         private const int countLevel = 5;
+
+
+
+        FormCarConfig form;
+
+
+
+
         public FormParking()
 
         {
             InitializeComponent();
             parking = new MultiLevelParking(countLevel, pictureBoxParking.Width,
            pictureBoxParking.Height);
+
+           
+
             //заполнение listBox
             for (int i = 0; i < countLevel; i++)
             {
@@ -105,7 +116,7 @@ namespace PT_lab_1
                     if (dialogDop.ShowDialog() == DialogResult.OK)
                     {
                         var car = new autotrain(100, 1000, dialog.Color,
-                       dialogDop.Color, true, false, true);
+                       dialogDop.Color, true, true, true);
                         int place = parking[listBoxLevels.SelectedIndex] + car;
                         if (place == -1)
                         {
@@ -137,7 +148,7 @@ namespace PT_lab_1
                         Bitmap bmp = new Bitmap(pictureBoxTakeCar.Width,
                        pictureBoxTakeCar.Height);
                         Graphics gr = Graphics.FromImage(bmp);
-                        car.SetPosition(5, 5, pictureBoxTakeCar.Width,
+                        car.SetPosition (5, 5, pictureBoxTakeCar.Width,
                        pictureBoxTakeCar.Height);
                         car.DrawCar(gr);
                         pictureBoxTakeCar.Image = bmp;
@@ -152,6 +163,31 @@ namespace PT_lab_1
                 }
             }
 
+        }
+
+
+
+        private void AddCar(ITransport car)
+        {
+            if (car != null && listBoxLevels.SelectedIndex > -1)
+            {
+                int place = parking[listBoxLevels.SelectedIndex] + car;
+                if (place > -1)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Машину не удалось поставить");
+                }
+            }
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            form = new FormCarConfig();
+            form.AddEvent(AddCar);
+            form.Show();
         }
     }
 }

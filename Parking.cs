@@ -16,7 +16,7 @@ namespace PT_lab_1
             _maxCount = sizes;
             _places = new Dictionary<int, T>();
             PictureWidth = pictureWidth;
-            PictureHeight = pictureHeight; 
+            PictureHeight = pictureHeight;     
         }
         public static int operator +(Parking<T> p, T car)
         {
@@ -29,8 +29,8 @@ namespace PT_lab_1
                 if (p.CheckFreePlace(i))
                 {
                     p._places.Add(i, car);
-                    p._places[i].SetPosition((i / 5 * _placeSizeWidth + 5)-180,
-                     (i % 5 * _placeSizeHeight + 15)-10, p.PictureWidth,
+                    p._places[i].SetPosition((5 + i / 5 * _placeSizeWidth + 5)-100,
+                     (i % 5 * _placeSizeHeight + 15) -10, p.PictureWidth,
                     p.PictureHeight);
                     return i;
                 }
