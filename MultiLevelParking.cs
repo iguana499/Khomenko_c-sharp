@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+
 namespace PT_lab_1
 {
     public class MultiLevelParking
@@ -17,8 +18,8 @@ namespace PT_lab_1
             this.pictureHeight = pictureHeight;
             for (int i = 0; i < countStages; ++i)
             {
-                parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth,
-               pictureHeight));
+            parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth,
+                pictureHeight));
             }
         }
         public Parking<ITransport> this[int ind]
@@ -49,26 +50,20 @@ namespace PT_lab_1
                         var transport = level[i];
                         if (transport != null)
                         {
-                            if (transport.GetType().Name == "Car")
+                            if (transport.GetType().Name == "WarCar")
                             {
-                                sw.Write(i + ":Car:");
+                                sw.Write(i + ":WarCar:");
                             }
-                            if (transport.GetType().Name == "autotrain")
+                            if (transport.GetType().Name == "Tank")
                             {
-                                sw.Write(i + ":autotrain:");
+                                sw.Write(i + ":Tank:");
                             }
                             sw.WriteLine(transport);
                         }
                     }
                 }
-                
             }
             return true;
-        }
-        private void WriteToFile(string text, FileStream stream)
-        {
-            byte[] info = new UTF8Encoding(true).GetBytes(text);
-            stream.Write(info, 0, info.Length);
         }
         public bool LoadData(string filename)
         {
@@ -84,7 +79,6 @@ namespace PT_lab_1
                 {
                     if (parkingStages != null)
                     {
-
                         parkingStages.Clear();
                     }
                     parkingStages = new List<Parking<ITransport>>();
@@ -93,7 +87,6 @@ namespace PT_lab_1
                 {
                     return false;
                 }
-
                 while (!fs.EndOfStream)
                 {
                     temp = fs.ReadLine();
@@ -102,23 +95,23 @@ namespace PT_lab_1
                         parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth, pictureHeight));
                         level++;
                     }
-                    else 
+                    else
                     {
                         int index = Convert.ToInt32(temp.Split(':')[0]);
-                        ITransport truck = null;
-                        if (temp.Contains("autotrain"))
+                        ITransport mashine = null;
+                        if (temp.Contains("Tank"))
                         {
-                            truck = new autotrain(temp.Split(':')[2]);
+                            mashine = new autotrain(temp.Split(':')[2]);
                         }
                         else
                         {
-                            truck = new Car(temp.Split(':')[2]);
+                            mashine = new Car(temp.Split(':')[2]);
                         }
-                        parkingStages[level][index] = truck;
+                        parkingStages[level][index] = mashine;
                     }
                 }
             }
             return true;
         }
-    }
+    }            
 }

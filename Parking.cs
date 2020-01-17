@@ -16,10 +16,14 @@ namespace PT_lab_1
             _maxCount = sizes;
             _places = new Dictionary<int, T>();
             PictureWidth = pictureWidth;
-            PictureHeight = pictureHeight;
+            PictureHeight = pictureHeight; 
         }
         public static int operator +(Parking<T> p, T car)
         {
+            if (p._places.Count == p._maxCount)
+            {
+                throw new ParkingOverflowException();
+            }
             if (p._places.Count == p._maxCount)
             {
                 return -1;
@@ -29,8 +33,8 @@ namespace PT_lab_1
                 if (p.CheckFreePlace(i))
                 {
                     p._places.Add(i, car);
-                    p._places[i].SetPosition((5 + i / 5 * _placeSizeWidth + 5)-100,
-                     (i % 5 * _placeSizeHeight + 15) -10, p.PictureWidth,
+                    p._places[i].SetPosition(30 + i / 5 * _placeSizeWidth + 5,
+                     i % 5 * _placeSizeHeight + 15, p.PictureWidth,
                     p.PictureHeight);
                     return i;
                 }
@@ -45,7 +49,7 @@ namespace PT_lab_1
                 p._places.Remove(index);
                 return car;
             }
-            return null;
+            throw new ParkingNotFoundException(index);
         }
          private bool CheckFreePlace(int index)
         {
@@ -89,8 +93,12 @@ namespace PT_lab_1
                 if (CheckFreePlace(ind))
                 {
                     _places.Add(ind, value);
-                    _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5
+                    _places[ind].SetPosition(40 + ind / 5 * _placeSizeWidth + 5, ind % 5
                     * _placeSizeHeight + 15, PictureWidth, PictureHeight);
+                }
+                else
+                {
+                    throw new ParkingOccupiedPlaceException(ind);
                 }
             }
         }
