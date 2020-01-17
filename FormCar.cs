@@ -75,9 +75,9 @@ namespace PT_lab_1
 
         private void ButtonCreate_Click(object sender, EventArgs e)
         {
-            Random rnd = new Random();
-            car = new wagons(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green,
-           Color.Yellow, true, true, true, true);
+           Random rnd = new Random();
+            car = new autotrain(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue,
+           Color.Yellow, true, true, true);
             car.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCar.Width,
            pictureBoxCar.Height);
             Draw();
@@ -86,9 +86,9 @@ namespace PT_lab_1
 
         private void ButtonCreateCar_Click_1(object sender, EventArgs e)
         {
-
+            
             Random rnd = new Random();
-            car = new autotrain(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green);
+            car = new Car(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue);
             car.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCar.Width,
            pictureBoxCar.Height);
             Draw();
