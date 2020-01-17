@@ -37,13 +37,13 @@ namespace PT_lab_1
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
+        
         /// <summary>
         /// Обработка нажатия кнопки "Создать гоночный автомобиль"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
+      
         /// <summary>
         /// Обработка нажатия кнопок управления
         /// </summary>
