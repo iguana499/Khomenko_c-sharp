@@ -113,5 +113,5 @@ namespace PT_lab_1
             }
             return true;
         }
-    }            
+    }
 }
