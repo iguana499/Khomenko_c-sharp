@@ -50,16 +50,16 @@ namespace PT_lab_1
         }
         public override void DrawCar(Graphics g)
         {
-            Pen pen = new Pen(Color.Black);
-            Brush brBlue = new SolidBrush(MainColor);
-            Brush brGray = new SolidBrush(Color.Gray);
-            Brush brBlack = new SolidBrush(Color.Black);
-            g.FillRectangle(brBlue, _startPosX + 585, _startPosY + 50, 60, 60);
-            g.FillRectangle(brGray, _startPosX + 400, _startPosY + 100, 245, 20);
-            g.FillEllipse(brBlack, _startPosX + 404, _startPosY + 102, 27, 27);
-            g.FillEllipse(brBlack, _startPosX + 530, _startPosY + 102, 27, 27);
-            g.FillEllipse(brBlack, _startPosX + 560, _startPosY + 102, 27, 27);
-            g.FillEllipse(brBlack, _startPosX + 615, _startPosY + 102, 27, 27);
-        }
+	    Pen pen = new Pen(Color.Black);
+	    Brush brBlue = new SolidBrush(MainColor);
+	    Brush brGray = new SolidBrush(Color.Gray);
+	    Brush brBlack = new SolidBrush(Color.Black);
+	    g.FillRectangle(brBlue, _startPosX + 585, _startPosY + 50, 60, 60);
+	    g.FillRectangle(brGray, _startPosX + 400, _startPosY + 100, 245, 20);
+	    g.FillEllipse(brBlack, _startPosX + 404, _startPosY + 102, 27, 27);
+	    g.FillEllipse(brBlack, _startPosX + 530, _startPosY + 102, 27, 27);
+	    g.FillEllipse(brBlack, _startPosX + 560, _startPosY + 102, 27, 27);
+	    g.FillEllipse(brBlack, _startPosX + 615, _startPosY + 102, 27, 27);
+	}
     }
 }

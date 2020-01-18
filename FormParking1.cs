@@ -20,8 +20,8 @@ namespace PT_lab_1
         /// Количество уровней-парковок
         /// </summary>
         private const int countLevel = 5;
+        FormCarConfig form;
         public FormParking()
-
         {
             InitializeComponent();
             parking = new MultiLevelParking(countLevel, pictureBoxParking.Width,
@@ -70,9 +70,7 @@ namespace PT_lab_1
         private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
-
         }
-
         private void buttonSetCar_Click_1(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
@@ -90,14 +88,11 @@ namespace PT_lab_1
                     Draw();
                 }
             }
-
         }
-
         private void buttonSetSportCar_Click_1(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
-
                 ColorDialog dialog = new ColorDialog();
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
@@ -105,7 +100,7 @@ namespace PT_lab_1
                     if (dialogDop.ShowDialog() == DialogResult.OK)
                     {
                         var car = new autotrain(100, 1000, dialog.Color,
-                       dialogDop.Color, true, false, true);
+                       dialogDop.Color, true, true, true);
                         int place = parking[listBoxLevels.SelectedIndex] + car;
                         if (place == -1)
                         {
@@ -116,16 +111,9 @@ namespace PT_lab_1
                     }
                 }
             }
-
-
-
-
-
         }
-
         private void buttonTakeCar_Click_1(object sender, EventArgs e)
         {
-
             if (listBoxLevels.SelectedIndex > -1)
             {
                 if (maskedTextBox.Text != "")
@@ -137,7 +125,7 @@ namespace PT_lab_1
                         Bitmap bmp = new Bitmap(pictureBoxTakeCar.Width,
                        pictureBoxTakeCar.Height);
                         Graphics gr = Graphics.FromImage(bmp);
-                        car.SetPosition(5, 5, pictureBoxTakeCar.Width,
+                        car.SetPosition (5, 5, pictureBoxTakeCar.Width,
                        pictureBoxTakeCar.Height);
                         car.DrawCar(gr);
                         pictureBoxTakeCar.Image = bmp;
@@ -151,7 +139,27 @@ namespace PT_lab_1
                     Draw();
                 }
             }
-
+        }
+        private void AddCar(ITransport car)
+        {
+            if (car != null && listBoxLevels.SelectedIndex > -1)
+            {
+                int place = parking[listBoxLevels.SelectedIndex] + car;
+                if (place > -1)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Машину не удалось поставить");
+                }
+            }
+        }
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            form = new FormCarConfig();
+            form.AddEvent(AddCar);
+            form.Show();
         }
     }
 }

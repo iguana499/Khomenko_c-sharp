@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,6 +55,12 @@
     <Compile Include="FormCar.Designer.cs">
       <DependentUpon>FormCar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCarConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCarConfig.Designer.cs">
+      <DependentUpon>FormCarConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormParking1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +76,9 @@
     <Compile Include="Vehicle.cs" />
     <EmbeddedResource Include="FormCar.resx">
       <DependentUpon>FormCar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCarConfig.resx">
+      <DependentUpon>FormCarConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormParking1.resx">
       <DependentUpon>FormParking1.cs</DependentUpon>
