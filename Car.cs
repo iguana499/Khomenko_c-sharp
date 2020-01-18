@@ -17,6 +17,16 @@ namespace PT_lab_1
             Weight = weight;
             MainColor = mainColor;
         }
+        public Car(string info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+            }
+        }
         public override void MoveTransport(Direction direction)
         {
             float step = MaxSpeed * 100 / Weight;
@@ -61,5 +71,9 @@ namespace PT_lab_1
 	    g.FillEllipse(brBlack, _startPosX + 560, _startPosY + 102, 27, 27);
 	    g.FillEllipse(brBlack, _startPosX + 615, _startPosY + 102, 27, 27);
 	}
+        public override string ToString()
+        {
+            return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
+        }
     }
 }
