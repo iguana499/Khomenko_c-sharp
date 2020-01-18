@@ -55,7 +55,7 @@
             this.pictureBoxCar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxCar.Location = new System.Drawing.Point(18, 45);
             this.pictureBoxCar.Name = "pictureBoxCar";
-            this.pictureBoxCar.Size = new System.Drawing.Size(458, 217);
+            this.pictureBoxCar.Size = new System.Drawing.Size(198, 133);
             this.pictureBoxCar.TabIndex = 0;
             this.pictureBoxCar.TabStop = false;
             // 
@@ -98,7 +98,7 @@
             this.panelCar.Controls.Add(this.pictureBoxCar);
             this.panelCar.Location = new System.Drawing.Point(316, 34);
             this.panelCar.Name = "panelCar";
-            this.panelCar.Size = new System.Drawing.Size(488, 420);
+            this.panelCar.Size = new System.Drawing.Size(237, 337);
             this.panelCar.TabIndex = 2;
             this.panelCar.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelCar_DragDrop);
             this.panelCar.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelCar_DragEnter);
@@ -107,7 +107,7 @@
             // 
             this.labelDopColor.AllowDrop = true;
             this.labelDopColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelDopColor.Location = new System.Drawing.Point(149, 265);
+            this.labelDopColor.Location = new System.Drawing.Point(36, 229);
             this.labelDopColor.Name = "labelDopColor";
             this.labelDopColor.Size = new System.Drawing.Size(131, 33);
             this.labelDopColor.TabIndex = 2;
@@ -119,7 +119,7 @@
             // 
             this.labelBaseColor.AllowDrop = true;
             this.labelBaseColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelBaseColor.Location = new System.Drawing.Point(149, 309);
+            this.labelBaseColor.Location = new System.Drawing.Point(36, 186);
             this.labelBaseColor.Name = "labelBaseColor";
             this.labelBaseColor.Size = new System.Drawing.Size(131, 34);
             this.labelBaseColor.TabIndex = 1;
@@ -130,7 +130,7 @@
             // panelBlack
             // 
             this.panelBlack.BackColor = System.Drawing.Color.Black;
-            this.panelBlack.Location = new System.Drawing.Point(810, 57);
+            this.panelBlack.Location = new System.Drawing.Point(559, 58);
             this.panelBlack.Name = "panelBlack";
             this.panelBlack.Size = new System.Drawing.Size(55, 46);
             this.panelBlack.TabIndex = 3;
@@ -139,7 +139,7 @@
             // 
             this.panelWhite.BackColor = System.Drawing.Color.White;
             this.panelWhite.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelWhite.Location = new System.Drawing.Point(902, 59);
+            this.panelWhite.Location = new System.Drawing.Point(644, 58);
             this.panelWhite.Name = "panelWhite";
             this.panelWhite.Size = new System.Drawing.Size(54, 45);
             this.panelWhite.TabIndex = 4;
@@ -147,7 +147,7 @@
             // panelGreen
             // 
             this.panelGreen.BackColor = System.Drawing.Color.Green;
-            this.panelGreen.Location = new System.Drawing.Point(810, 125);
+            this.panelGreen.Location = new System.Drawing.Point(559, 126);
             this.panelGreen.Name = "panelGreen";
             this.panelGreen.Size = new System.Drawing.Size(54, 46);
             this.panelGreen.TabIndex = 5;
@@ -155,7 +155,7 @@
             // panelBlue
             // 
             this.panelBlue.BackColor = System.Drawing.Color.Blue;
-            this.panelBlue.Location = new System.Drawing.Point(903, 126);
+            this.panelBlue.Location = new System.Drawing.Point(644, 126);
             this.panelBlue.Name = "panelBlue";
             this.panelBlue.Size = new System.Drawing.Size(53, 45);
             this.panelBlue.TabIndex = 6;
@@ -163,7 +163,7 @@
             // panelRed
             // 
             this.panelRed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.panelRed.Location = new System.Drawing.Point(810, 189);
+            this.panelRed.Location = new System.Drawing.Point(562, 189);
             this.panelRed.Name = "panelRed";
             this.panelRed.Size = new System.Drawing.Size(52, 47);
             this.panelRed.TabIndex = 7;
@@ -171,7 +171,7 @@
             // panelYellow
             // 
             this.panelYellow.BackColor = System.Drawing.Color.Yellow;
-            this.panelYellow.Location = new System.Drawing.Point(903, 190);
+            this.panelYellow.Location = new System.Drawing.Point(644, 190);
             this.panelYellow.Name = "panelYellow";
             this.panelYellow.Size = new System.Drawing.Size(53, 46);
             this.panelYellow.TabIndex = 8;
@@ -179,7 +179,7 @@
             // panelGray
             // 
             this.panelGray.BackColor = System.Drawing.Color.Gray;
-            this.panelGray.Location = new System.Drawing.Point(810, 254);
+            this.panelGray.Location = new System.Drawing.Point(562, 254);
             this.panelGray.Name = "panelGray";
             this.panelGray.Size = new System.Drawing.Size(52, 42);
             this.panelGray.TabIndex = 9;
@@ -187,7 +187,7 @@
             // panelGold
             // 
             this.panelGold.BackColor = System.Drawing.Color.Gold;
-            this.panelGold.Location = new System.Drawing.Point(903, 254);
+            this.panelGold.Location = new System.Drawing.Point(644, 254);
             this.panelGold.Name = "panelGold";
             this.panelGold.Size = new System.Drawing.Size(53, 42);
             this.panelGold.TabIndex = 10;
@@ -216,7 +216,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1372, 611);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.panelGold);

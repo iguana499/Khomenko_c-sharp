@@ -156,10 +156,10 @@
             this.загрузитьToolStripMenuItem.Text = "Загрузить";
             this.загрузитьToolStripMenuItem.Click += new System.EventHandler(this.загрузитьToolStripMenuItem_Click);
             // 
-            // contextMenuStrip1
+            // contextMenuStrip
             // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip.Name = "contextMenuStrip1";
+            this.contextMenuStrip.Size = new System.Drawing.Size(61, 4);
             // 
             // openFileDialog
             // 
@@ -170,11 +170,22 @@
             // 
             this.saveFileDialog.Filter = "txt file | *.txt";
             // 
+            // buttonSort
+            // 
+            this.buttonSort.Location = new System.Drawing.Point(811, 493);
+            this.buttonSort.Name = "buttonSort";
+            this.buttonSort.Size = new System.Drawing.Size(49, 35);
+            this.buttonSort.TabIndex = 8;
+            this.buttonSort.Text = "sort";
+            this.buttonSort.UseVisualStyleBackColor = true;
+            this.buttonSort.Click += new System.EventHandler(this.buttonSort_Click);
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1423, 761);
+            this.Controls.Add(this.buttonSort);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.pictureBoxTakeCar);

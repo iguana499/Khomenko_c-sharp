@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PT_lab_1
 {
-    class autotrain : Car
+    class autotrain : Car , IComparable<autotrain>, IEquatable<autotrain>
     {
         public Color DopColor { private set; get; }
         public bool second { private set; get; }
@@ -53,40 +53,116 @@ bool frontSpoiler, bool sideSpoiler, bool backSpoiler) :
         public override void DrawCar(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
-            Brush brBlue = new SolidBrush(MainColor);
-            Brush brDark = new SolidBrush(Color.Gray);
-            Brush brGray = new SolidBrush(DopColor);
-            Brush brBlack = new SolidBrush(Color.Black);
+            Brush dopBrush = new SolidBrush(DopColor);
             if (second)
             {
-                g.FillRectangle(brGray, _startPosX + 400, _startPosY + 10, 180, 100);
-                g.FillRectangle(brGray, _startPosX + 201, _startPosY + 10, 190, 100);
-                g.FillRectangle(brDark, _startPosX + 201, _startPosY + 100, 190, 20);
-                g.FillEllipse(brBlack, _startPosX + 204, _startPosY + 102, 27, 27);
-                g.FillEllipse(brBlack, _startPosX + 330, _startPosY + 102, 27, 27);
-                g.FillEllipse(brBlack, _startPosX + 360, _startPosY + 102, 27, 27);
-                g.FillRectangle(brBlack, _startPosX + 390, _startPosY + 90, 30, 10);
+                Brush brFirstGun = new SolidBrush(DopColor);
+                g.DrawRectangle(pen, _startPosX + 5, _startPosY + 10, 85, 10);
+                g.FillRectangle(brFirstGun, _startPosX + 5, _startPosY + 10, 85, 10);
+                g.DrawRectangle(pen, _startPosX + 5, _startPosY + 10, 85, 10);
             }
             if (third)
             {
-                g.FillRectangle(brBlue, _startPosX - 1, _startPosY + 10, 190, 100);
-                g.FillRectangle(brDark, _startPosX - 1, _startPosY + 100, 190, 20);
-                g.FillEllipse(brBlack, _startPosX + 4, _startPosY + 102, 27, 27);
-                g.FillEllipse(brBlack, _startPosX + 130, _startPosY + 102, 27, 27);
-                g.FillEllipse(brBlack, _startPosX + 160, _startPosY + 102, 27, 27);
-                g.FillRectangle(brBlack, _startPosX + 190, _startPosY + 90, 11, 10);
-            }
+                Brush brSecondGun = new SolidBrush(DopColor);
+                g.DrawRectangle(pen, _startPosX + 5, _startPosY + 40, 85, 6);
+                g.FillRectangle(brSecondGun, _startPosX + 5, _startPosY + 40, 85, 6);
+                g.DrawRectangle(pen, _startPosX + 5, _startPosY + 40, 85, 6);
 
+            }
             if (Refrigerator)
             {
-                g.FillRectangle(brBlue, _startPosX + 585, _startPosY + 26, 20, 20);
+                Brush brThirdGun = new SolidBrush(DopColor);
+                g.DrawRectangle(pen, _startPosX - 35, _startPosY + 32, 80, 6);
+                g.FillRectangle(brThirdGun, _startPosX - 35, _startPosY + 32, 80, 6);
+                g.DrawRectangle(pen, _startPosX - 35, _startPosY + 32, 80, 6);
             }
+            Brush brTank = new SolidBrush(MainColor);
+            g.DrawRectangle(pen, _startPosX + 5, _startPosY + 10, 85, 10);
+            g.DrawRectangle(pen, _startPosX + 10, _startPosY - 5, 20, 10);
+            g.FillRectangle(brTank, _startPosX + 10, _startPosY - 5, 20, 10);
+            g.DrawEllipse(pen, _startPosX, _startPosY, 52, 31);
+            g.FillEllipse(brTank, _startPosX, _startPosY, 52, 31);
+            g.DrawEllipse(pen, _startPosX, _startPosY, 52, 31);
             base.DrawCar(g);
         }
         public override string ToString()
         {
             return base.ToString() + ";" + DopColor.Name + ";" + second + ";" +
            third + ";" + Refrigerator+";0";
+        }
+        public int CompareTo(autotrain other)
+        {
+            var res = (this is Car).CompareTo(other is Car);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (DopColor != other.DopColor)
+            {
+                DopColor.Name.CompareTo(other.DopColor.Name);
+            }
+            if (second != other.second)
+            {
+                return second.CompareTo(other.second);
+            }
+            if (third != other.third)
+            {
+                return third.CompareTo(other.third);
+            }
+            if (Refrigerator != other.Refrigerator)
+            {
+                return Refrigerator.CompareTo(other.Refrigerator);
+            }
+            return 0;
+        }
+        public bool Equals(autotrain other)
+        {
+            var res = (this as Car).Equals(other as Car);
+            if (!res)
+            {
+                return res;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (second != other.second)
+            {
+                return false;
+            }
+ 
+            if (third != other.third)
+            {
+                return false;
+            }
+            if (Refrigerator != other.Refrigerator)
+            {
+                return false;
+            }
+            return true;
+        }
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is autotrain carObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(carObj);
+            }
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

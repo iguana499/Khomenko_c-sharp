@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PT_lab_1
 {
-    public class Car : Vehicle
+    public class Car : Vehicle , IComparable<Car>, IEquatable<Car>
     {
         protected const int carWidth = 100;
         protected const int carHeight = 60;
@@ -61,19 +61,82 @@ namespace PT_lab_1
         public override void DrawCar(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
-            Brush brBlue = new SolidBrush(MainColor);
-            Brush brGray = new SolidBrush(Color.Gray);
-            Brush brBlack = new SolidBrush(Color.Black);
-            g.FillRectangle(brBlue, _startPosX + 585, _startPosY + 50, 60, 60);
-            g.FillRectangle(brGray, _startPosX + 400, _startPosY + 100, 245, 20);
-            g.FillEllipse(brBlack, _startPosX + 404, _startPosY + 102, 27, 27);
-            g.FillEllipse(brBlack, _startPosX + 530, _startPosY + 102, 27, 27);
-            g.FillEllipse(brBlack, _startPosX + 560, _startPosY + 102, 27, 27);
-            g.FillEllipse(brBlack, _startPosX + 615, _startPosY + 102, 27, 27);
+            Brush warCar = new SolidBrush(MainColor);
+            Brush blackBrush = new SolidBrush(Color.Black);
+            g.FillRectangle(warCar, _startPosX + 60, _startPosY + 35, 50, 45);
+            g.FillRectangle(blackBrush, _startPosX + 80, _startPosY + 40, 30, 30);
+            g.FillRectangle(warCar, _startPosX - 20, _startPosY + 30, 80, 50);
+            g.DrawRectangle(pen, _startPosX - 20, _startPosY + 30, 80, 50);
+            g.DrawRectangle(pen, _startPosX - 15, _startPosY + 35, 60, 30);
+            g.DrawRectangle(pen, _startPosX + 60, _startPosY + 35, 50, 45);
+            g.FillEllipse(blackBrush, _startPosX - 18, _startPosY + 70, 40, 40);
+            g.FillEllipse(blackBrush, _startPosX + 55, _startPosY + 70, 40, 40);
         }
         public override string ToString()
         {
             return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
+        }
+        public int CompareTo(Car other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return MaxSpeed.CompareTo(other.MaxSpeed);
+            }
+            if (Weight != other.Weight)
+            {
+                return Weight.CompareTo(other.Weight);
+            }
+            if (MainColor != other.MainColor)
+            {
+                MainColor.Name.CompareTo(other.MainColor.Name);
+            }
+            return 0;
+        }
+        public bool Equals(Car other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            return true;
+        }
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is Car carObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(carObj);
+            }
+        }        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

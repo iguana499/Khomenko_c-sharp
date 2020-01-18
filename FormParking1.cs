@@ -166,7 +166,7 @@ namespace PT_lab_1
                 }
                 catch (ParkingOverflowException ex)
                 {
-                    logger.Error("Переполнениe");
+                    logger.Error("Переполнение");
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
                 }
@@ -229,6 +229,13 @@ namespace PT_lab_1
                 }
                 Draw();
             }
-        }      
+        }
+
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            parking.Sort();
+            Draw();
+            logger.Info("Сортировка уровней");
+        }
     }
 }
