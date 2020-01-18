@@ -11,16 +11,11 @@ using System.Windows.Forms;
 namespace PT_lab_1
 {
     public partial class FormCarConfig : Form
-
-
     {
-
         private event carDelegate eventAddCar;
-
         ITransport car = null;
         public FormCarConfig()
-        {
-           
+        { 
             InitializeComponent();
             panelBlack.MouseDown += panelColor_MouseDown;
             panelGold.MouseDown += panelColor_MouseDown;
@@ -32,17 +27,12 @@ namespace PT_lab_1
             panelBlue.MouseDown += panelColor_MouseDown;
 
             buttonCancel.Click += (object sender, EventArgs e) => { Close(); };
-
         }
-
-
         private void panelColor_MouseDown(object sender, MouseEventArgs e)
         {
             (sender as Control).DoDragDrop((sender as Control).BackColor,
            DragDropEffects.Move | DragDropEffects.Copy);
         }
-
-
         private void DrawCar()
         {
             if (car != null)
@@ -54,18 +44,13 @@ namespace PT_lab_1
                 pictureBoxCar.Image = bmp;
             }
         }
-
         private void labelCar_MouseDown(object sender, MouseEventArgs e)
         {
-
             labelCar.DoDragDrop(labelCar.Text, DragDropEffects.Move |
             DragDropEffects.Copy);
-
         }
-
         private void panelCar_DragDrop(object sender, DragEventArgs e)
         {
-
             switch (e.Data.GetData(DataFormats.Text).ToString())
             {
                 case "Тягач":
@@ -77,9 +62,7 @@ namespace PT_lab_1
                     break;
             }
             DrawCar();
-
         }
-
         private void panelCar_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.Text))
@@ -90,19 +73,12 @@ namespace PT_lab_1
             {
                 e.Effect = DragDropEffects.None;
             }
-
-
-
-
         }
-
         private void labelSportCar_MouseDown(object sender, MouseEventArgs e)
         {
             labelSportCar.DoDragDrop(labelSportCar.Text, DragDropEffects.Move |
                 DragDropEffects.Copy);
-
         }
-
         private void labelBaseColor_DragDrop(object sender, DragEventArgs e)
         {
             if (car != null)
@@ -110,14 +86,9 @@ namespace PT_lab_1
                 car.SetMainColor((Color)e.Data.GetData(typeof(Color)));
                 DrawCar();
             }
-
-
         }
-
         private void labelBaseColor_DragEnter(object sender, DragEventArgs e)
         {
-            
-
             if (e.Data.GetDataPresent(typeof(Color)))
             {
                 e.Effect = DragDropEffects.Copy;
@@ -126,12 +97,7 @@ namespace PT_lab_1
             {
                 e.Effect = DragDropEffects.None;
             }
-
-
-
-
         }
-
         private void labelDopColor_DragDrop(object sender, DragEventArgs e)
         {
             if (car != null)
@@ -142,15 +108,7 @@ namespace PT_lab_1
                     DrawCar();
                 }
             }
-
         }
-
-        private void buttonCancel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
         public void AddEvent(carDelegate ev)
         {
             if (eventAddCar == null)
@@ -162,21 +120,14 @@ namespace PT_lab_1
                 eventAddCar += ev;
             }
         }
-
-
         private void buttonAdd_Click(object sender, EventArgs e)
         {
 
             eventAddCar?.Invoke(car);
             Close();
-
-
-
         }
-
         private void labelDopColor_DragEnter(object sender, DragEventArgs e)
         {
-
             if (e.Data.GetDataPresent(typeof(Color)))
             {
                 e.Effect = DragDropEffects.Copy;
