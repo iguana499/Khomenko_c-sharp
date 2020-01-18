@@ -20,23 +20,12 @@ namespace PT_lab_1
         /// Количество уровней-парковок
         /// </summary>
         private const int countLevel = 5;
-
-
-
         FormCarConfig form;
-
-
-
-
         public FormParking()
-
         {
             InitializeComponent();
             parking = new MultiLevelParking(countLevel, pictureBoxParking.Width,
            pictureBoxParking.Height);
-
-           
-
             //заполнение listBox
             for (int i = 0; i < countLevel; i++)
             {
@@ -81,9 +70,7 @@ namespace PT_lab_1
         private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
-
         }
-
         private void buttonSetCar_Click_1(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
@@ -101,14 +88,11 @@ namespace PT_lab_1
                     Draw();
                 }
             }
-
         }
-
         private void buttonSetSportCar_Click_1(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
-
                 ColorDialog dialog = new ColorDialog();
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
@@ -127,16 +111,9 @@ namespace PT_lab_1
                     }
                 }
             }
-
-
-
-
-
         }
-
         private void buttonTakeCar_Click_1(object sender, EventArgs e)
         {
-
             if (listBoxLevels.SelectedIndex > -1)
             {
                 if (maskedTextBox.Text != "")
@@ -162,11 +139,7 @@ namespace PT_lab_1
                     Draw();
                 }
             }
-
         }
-
-
-
         private void AddCar(ITransport car)
         {
             if (car != null && listBoxLevels.SelectedIndex > -1)
@@ -182,7 +155,6 @@ namespace PT_lab_1
                 }
             }
         }
-
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             form = new FormCarConfig();
