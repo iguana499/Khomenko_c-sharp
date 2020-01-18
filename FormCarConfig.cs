@@ -39,7 +39,7 @@ namespace PT_lab_1
             {
                 Bitmap bmp = new Bitmap(pictureBoxCar.Width, pictureBoxCar.Height);
                 Graphics gr = Graphics.FromImage(bmp);
-                car.SetPosition(5, 5, pictureBoxCar.Width, pictureBoxCar.Height);
+                car.SetPosition(40, 5, pictureBoxCar.Width, pictureBoxCar.Height);
                 car.DrawCar(gr);
                 pictureBoxCar.Image = bmp;
             }
@@ -57,7 +57,7 @@ namespace PT_lab_1
                     car = new Car(100, 500, Color.White);
                     break;
                 case "Автопоезд":
-                    car = new autotrain(100, 500, Color.White, Color.Black, true, false,
+                    car = new autotrain(100, 500, Color.White, Color.Black, true, true,
                    true);
                     break;
             }
@@ -122,7 +122,6 @@ namespace PT_lab_1
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-
             eventAddCar?.Invoke(car);
             Close();
         }
